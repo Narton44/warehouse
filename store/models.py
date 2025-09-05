@@ -11,7 +11,7 @@ class Stock(models.Model):
     
     owner = models.ForeignKey(
         'OwnCompany',
-        on_delete = models.DO_NOTHING,
+        on_delete = models.PROTECT,
         max_length=50,
         verbose_name='владелец склада',
         blank=False,
@@ -42,7 +42,7 @@ class Product(models.Model):
 
     stock = models.ForeignKey(
         Stock,
-        on_delete=models.DO_NOTHING,
+        on_delete=models.PROTECT,
         null=True,
         blank=False
         )
@@ -59,7 +59,7 @@ class Product(models.Model):
     
     measure_unit = models.ForeignKey(
         'MeasureUnit',
-        on_delete=models.DO_NOTHING,
+        on_delete=models.PROTECT,
         verbose_name='ед. изм.',
         null=True,
         )

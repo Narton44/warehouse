@@ -19,9 +19,9 @@ class StockAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name','stock','id', 'quantity', 'measure_unit' 'price',]
-    list_filter = ['name','stock','id', 'quantity', 'measure_unit' 'price',]
-    search_fields = ['name','stock','id', 'quantity', 'measure_unit' 'price',]
+    list_display = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
+    list_filter = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
+    search_fields = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
 
 admin.site.register(Bank)
 admin.site.register(Buyer)

@@ -34,6 +34,17 @@ class Stock(models.Model):
 
 class Product(models.Model):
 
+    MEASURE_UNIT = [
+        ("шт.", "шт."),
+        ("кг.", "кг."),
+        ("м.", "м."),
+        ("кв.м.", "кв.м."),
+        ("л.", "л."),
+        ("уп.", "уп."),
+        ("т.", "т."),
+        ("куб.м.", "куб.м."),
+    ]
+
     name = models.CharField(
         max_length=50,
         unique=True,        
@@ -56,11 +67,9 @@ class Product(models.Model):
         default=0,
         )
     
-    measure_unit = models.ForeignKey(
-        'MeasureUnit',
-        on_delete=models.PROTECT,
+    measure_unit = models.CharField(
+        choices=MEASURE_UNIT,
         verbose_name='ед. изм.',
-        null=True,
         )
     
     price = models.PositiveIntegerField(
@@ -76,18 +85,6 @@ class Product(models.Model):
         ordering = ['name']
 
 
-class MeasureUnit(models.Model):
-
-    name = models.CharField(
-        max_length=10,
-        )
-    
-    def __str__(self):
-        return self.name
-    
-    class Meta:
-        verbose_name = 'ед. изм.'
-        ordering = ['name']
 
 class OwnCompany(models.Model):
 

@@ -14,13 +14,11 @@ class Stock(models.Model):
         max_length=50,
         verbose_name='владелец склада',
         blank=False,
-        null=True,
         ) 
     
     adress = models.CharField(
         verbose_name='адрес',
         max_length=100,
-        blank=True
         )
     
     def __str__(self):
@@ -53,8 +51,6 @@ class Product(models.Model):
     stock = models.ForeignKey(
         Stock,
         on_delete=models.PROTECT,
-        null=True,
-        blank=False
         )
     
     id = models.AutoField(
@@ -69,10 +65,10 @@ class Product(models.Model):
     
     measure_unit = models.CharField(
         choices=MEASURE_UNIT,
-        verbose_name='ед. изм.',
+        verbose_name='ед.изм.',
         )
     
-    price = models.PositiveIntegerField(
+    price = models.FloatField(
         verbose_name='цена',
         )
     
@@ -85,23 +81,18 @@ class Product(models.Model):
         ordering = ['name']
 
 
-
 class OwnCompany(models.Model):
 
     name = models.CharField(
         verbose_name='название',
         max_length=50,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     adress = models.CharField(
         verbose_name='адрес',
         max_length=100,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     phone_number = models.CharField(
@@ -109,27 +100,23 @@ class OwnCompany(models.Model):
         max_length=15,
     )
 
-    inn = models.IntegerField(
+    inn = models.CharField(
         verbose_name='ИНН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
-    ogrn = models.IntegerField(
+    ogrn = models.CharField(
         verbose_name='ОГРН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
     bank = models.ForeignKey(
         'Bank',
-        on_delete=models.DO_NOTHING,
+        on_delete=models.PROTECT,
         verbose_name='банк',
     )
 
-    bank_account = models.IntegerField(
+    bank_account = models.CharField(
         verbose_name='счёт в банке',
     )
 
@@ -148,16 +135,12 @@ class Supplier(models.Model):
         verbose_name='название',
         max_length=50,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     adress = models.CharField(
         verbose_name='адрес',
         max_length=100,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     phone_number = models.CharField(
@@ -165,26 +148,23 @@ class Supplier(models.Model):
         max_length=15,
     )
 
-    inn = models.IntegerField(
+    inn = models.CharField(
         verbose_name='ИНН',
-        blank=False,
-        null=True,
+        unique=True,
     )
 
-    ogrn = models.IntegerField(
+    ogrn = models.CharField(
         verbose_name='ОГРН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
     bank = models.ForeignKey(
         'Bank',
-        on_delete=models.DO_NOTHING,
+        on_delete=models.PROTECT,
         verbose_name='банк',
     )
 
-    bank_account = models.IntegerField(
+    bank_account = models.CharField(
         verbose_name='счёт в банке',
     )
 
@@ -203,16 +183,11 @@ class Buyer(models.Model):
         verbose_name='название',
         max_length=50,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     adress = models.CharField(
         verbose_name='адрес',
         max_length=100,
-        unique=True,
-        blank=False,
-        null=True,
     )
 
     phone_number = models.CharField(
@@ -220,27 +195,23 @@ class Buyer(models.Model):
         max_length=15,
     )
 
-    inn = models.IntegerField(
+    inn = models.CharField(
         verbose_name='ИНН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
-    ogrn = models.IntegerField(
+    ogrn = models.CharField(
         verbose_name='ОГРН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
     bank = models.ForeignKey(
         'Bank',
-        on_delete=models.DO_NOTHING,
+        on_delete=models.PROTECT,
         verbose_name='банк',
     )
 
-    bank_account = models.IntegerField(
+    bank_account = models.CharField(
         verbose_name='счёт в банке',
     )
 
@@ -259,16 +230,12 @@ class Bank(models.Model):
         verbose_name='банк',
         max_length=50,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     adress = models.CharField(
         verbose_name='адрес',
         max_length=100,
         unique=True,
-        blank=False,
-        null=True,
     )
 
     phone_number = models.CharField(
@@ -276,21 +243,18 @@ class Bank(models.Model):
         max_length=15,
     )
 
-    bank_id = models.IntegerField(
+    bank_id = models.CharField(
         verbose_name='БИК',
+        max_length=9,
     )
 
-    inn = models.IntegerField(
+    inn = models.CharField(
         verbose_name='ИНН',
-        blank=False,
-        null=True,
     )
 
-    ogrn = models.IntegerField(
+    ogrn = models.CharField(
         verbose_name='ОГРН',
         unique=True,
-        blank=False,
-        null=True,
     )
 
     def __str__(self):
@@ -312,32 +276,20 @@ class StockIn(models.Model):
     in_date = models.DateTimeField(
         verbose_name='Дата и время поступления',
         auto_now_add=True,
-        blank=False,
-        null=True,
     )
 
     supplier = models.ForeignKey(
         Supplier,
-        on_delete = models.DO_NOTHING,
+        on_delete = models.PROTECT,
         max_length=50,
         verbose_name='Поставщик',
-        blank=False,
-        null=True,
     )
 
     buyer = models.ForeignKey(
         OwnCompany,
-        on_delete = models.DO_NOTHING,
+        on_delete = models.PROTECT,
         max_length=50,
         verbose_name='Покупатель',
-        blank=False,
-        null=True,
-    )
-
-    stock = models.ForeignKey(
-        Stock,
-        on_delete=models.DO_NOTHING,
-
     )
 
     product = models.ManyToManyField(
@@ -346,7 +298,7 @@ class StockIn(models.Model):
     )
 
     def __str__(self):
-        return f'{self.number} от {self.in_date}, {self.supplier}'
+        return f'{self.number} от {self.in_date}, ({self.supplier})'
     
     class Meta:
         verbose_name = 'поступление'
@@ -364,32 +316,20 @@ class StockOut(models.Model):
     out_date = models.DateTimeField(
         verbose_name='Дата и время отгрузки',
         auto_now_add=True,
-        blank=False,
-        null=True,
     )
 
     supplier = models.ForeignKey(
         OwnCompany,
-        on_delete = models.DO_NOTHING,
+        on_delete = models.PROTECT,
         max_length=50,
         verbose_name='Поставщик',
-        blank=False,
-        null=True,
     )
 
     buyer = models.ForeignKey(
         Buyer,
-        on_delete = models.DO_NOTHING,
+        on_delete = models.PROTECT,
         max_length=50,
         verbose_name='Покупатель',
-        blank=False,
-        null=True,
-    )
-
-    stock = models.ForeignKey(
-        Stock,
-        on_delete=models.DO_NOTHING,
-
     )
 
     product = models.ManyToManyField(

@@ -7,12 +7,12 @@
     </head>
     <body>
         {% block content %}
-        <h1> Склады </h1>
+        <h1> Весёлый склад: 1.0 </h1>
             {% if stock_list %}
                 <ul>
                  {% for stock in stock_list %}
                   <li>
-                   <a href="">{{ stock.name }}</a>
+                   <h3><a href="">{{ stock.name }}</a></h3>
                   </li>
                  {% endfor %}
                 </ul>

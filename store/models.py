@@ -45,12 +45,14 @@ class Product(models.Model):
 
     name = models.CharField(
         max_length=50,
-        unique=True,        
+        unique=True,
+        verbose_name='наименование',      
         )
 
     stock = models.ForeignKey(
         Stock,
         on_delete=models.PROTECT,
+        verbose_name='склад',
         )
     
     id = models.AutoField(

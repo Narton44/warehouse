@@ -11,17 +11,24 @@ from .models import (
     )
 
 
+
+class ProductInline(admin.TabularInline):
+    model = Product
+    extra =0
+
 @admin.register(Stock)
 class StockAdmin(admin.ModelAdmin):
     list_display = ['name', 'owner', 'adress',]
     list_filter = ['name', 'owner', 'adress',]
     search_fields = ['name', 'owner', 'adress',]
+    inlines = [ProductInline]
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
-    list_filter = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
-    search_fields = ['name','stock','id', 'quantity', 'measure_unit', 'price',]
+    list_filter = ['stock',]
+    search_fields = ['stock__name','stock','id', 'quantity', 'measure_unit', 'price',]
 
 admin.site.register(Bank)
 admin.site.register(Buyer)

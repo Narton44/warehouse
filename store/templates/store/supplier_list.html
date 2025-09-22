@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+        {% block content %}
+        <h1> Поставщики </h1>
+            {% if supplier_list %}
+                <ul>
+                 {% for supplier in supplier_list %}
+                  <li>
+                   <h5><a href="">{{ supplier.name }} , адрес: {{ supplier.adress }} , ИНН {{ supplier.inn }} , ОГРН {{ supplier.ogrn }}</a></h5>
+                  </li>
+                 {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет поставщиков
+                    .</p>
+            {% endif %}
+    {% endblock %} 

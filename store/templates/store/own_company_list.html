@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+        {% block content %}
+        <h1> Свои фирмы </h1>
+            {% if owncompany_list %}
+                <ul>
+                 {% for own_company in owncompany_list %}
+                  <li>
+                   <h5><a href="">{{ own_company.name }} , адрес: {{ own_company.adress }} , ИНН {{ own_company.inn }} , ОГРН {{ own_company.ogrn }}</a></h5>
+                  </li>
+                 {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет своих фирм.</p>
+            {% endif %}
+    {% endblock %} 

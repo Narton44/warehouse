@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+        {% block content %}
+        <h1> Покупатели </h1>
+            {% if buyer_list %}
+                <ul>
+                 {% for buyer in buyer_list %}
+                  <li>
+                   <h5><a href="">{{ buyer.name }} , адрес: {{ buyer.adress }} , ИНН {{ buyer.inn }} , ОГРН {{ buyer.ogrn }}</a></h5>
+                  </li>
+                 {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет покупателей.</p>
+            {% endif %}
+    {% endblock %} 

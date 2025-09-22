@@ -74,6 +74,10 @@ class Product(models.Model):
         verbose_name='цена',
         )
     
+    @property
+    def total_value(self):
+        return self.quantity*self.price
+    
     def __str__(self):
         return self.name
 

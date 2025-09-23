@@ -5,7 +5,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path(
         '',
-        views.StockListView.as_view(),
+        views.index,
         name='main'
         ), # переменная контекста в шаблоне 'main'
     path(

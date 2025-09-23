@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+        {% block content %}
+        <h1> визитка предприятия </h1>
+                <ul>
+                  <li><h5> {{ owncompany.name }}</h5></li>
+                  <li><h5> Адрес:{{ owncompany.adress }}</h5></li>    
+                  <li><h5> ИНН:{{ owncompany.inn }}</h5></li>
+                  <li><h5> ОГРН:{{ owncompany.ogrn }}</h5></li>
+                  <li><h5> тел.:{{ owncompany.phone_number }}</h5></li>
+                </ul>
+          </table>
+        {% endblock %}

@@ -34,13 +34,28 @@ urlpatterns = [
         name='buyerlist'
     ), # переменная контекста в шаблоне 'buyer_list'
     path(
-        'store/<int:stock_id>/products',
+        '<int:stock_id>/products',
         views.StockProductList.as_view(),
         name='stockproductlist'
     ), # переменная контекста в шаблоне 'stock_product_list'
     path(
-        'store/products/<int:pk>',
+        'products/<int:pk>',
         views.ProductDetailView.as_view(),
         name='productdetail'
-    ), # переменная контекста в шаблоне 'product_detail'
+    ), # переменная контекста в шаблоне 'product'
+    path(
+        'owncompany/<int:pk>',
+        views.OwnCompanyDetailView.as_view(),
+        name='owncompanydetail'
+    ), # переменная контекста в шаблоне 'owncompany'
+    path(
+        'supplier/<int:pk>',
+        views.SupplierDetailView.as_view(),
+        name='supplierdetail'
+    ), # переменная контекста в шаблоне 'supplier'
+    path(
+        'buyer/<int:pk>',
+        views.BuyerDetailView.as_view(),
+        name='buyerdetail'
+    ), # переменная контекста в шаблоне 'buyer'
 ] + debug_toolbar_urls()

@@ -6,7 +6,11 @@
                 <ul>
                  {% for buyer in buyer_list %}
                   <li>
-                   <h5><a href="">{{ buyer.name }} , адрес: {{ buyer.adress }} , ИНН {{ buyer.inn }} , ОГРН {{ buyer.ogrn }}</a></h5>
+                   <h5><a href="{% url 'buyerdetail' buyer.pk %}">{{ buyer.name }},  
+                    адрес: {{ buyer.adress }},  
+                    ИНН {{ buyer.inn }}, 
+                    ОГРН {{ buyer.ogrn }}
+                   </a></h5>
                   </li>
                  {% endfor %}
                 </ul>

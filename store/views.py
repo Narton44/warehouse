@@ -41,4 +41,19 @@ class StockProductList(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'store/product_detail_view.html'
-    context_object_name = 'product_detail'
+    context_object_name = 'product'
+
+class OwnCompanyDetailView(DetailView):
+    model = OwnCompany
+    template_name = 'store/owncompany_detail_view.html'
+    context_object_name = 'owncompany'
+
+class SupplierDetailView(DetailView):
+    model = Supplier
+    template_name = 'store/supplier_detail_view.html'
+    context_object_name = 'supplier'
+
+class BuyerDetailView(DetailView):
+    model = Buyer
+    template_name = 'store/buyer_detail_view.html'
+    context_object_name = 'buyer'

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+        {% block content %}
+        <h1> карточка покупателя </h1>
+                <ul>
+                  <li><h5> {{ buyer.name }}</h5></li>
+                  <li><h5> Адрес:  {{ buyer.adress }}</h5></li>    
+                  <li><h5> ИНН:  {{ buyer.inn }}</h5></li>
+                  <li><h5> ОГРН:  {{ buyer.ogrn }}</h5></li>
+                  <li><h5> тел.:  {{ buyer.phone_number }}</h5></li>
+                </ul>
+          </table>
+        {% endblock %}

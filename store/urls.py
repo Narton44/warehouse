@@ -20,24 +20,24 @@ urlpatterns = [
     ), # переменная контекста в шаблоне 'product_list'
     path(
         'owncompanies/',
-        views.OwnCompanyList.as_view(),
+        views.OwnCompanyListView.as_view(),
         name='owncompanylist'
     ), # переменная контекста в шаблоне 'owncompany_list'
     path(
         'suppliers/',
-        views.SupplierList.as_view(),
+        views.SupplierListView.as_view(),
         name='supplierlist'
     ), # переменная контекста в шаблоне 'supplier_list'
     path(
         'buyers/',
-        views.BuyerList.as_view(),
+        views.BuyerListView.as_view(),
         name='buyerlist'
     ), # переменная контекста в шаблоне 'buyer_list'
     path(
-        '<int:stock_id>/products',
-        views.StockProductList.as_view(),
-        name='stockproductlist'
-    ), # переменная контекста в шаблоне 'stock_product_list'
+        'store/<int:pk>',
+        views.StockDetailView.as_view(),
+        name='stockdetail'
+    ), # переменная контекста в шаблоне 'stock_detail'
     path(
         'products/<int:pk>',
         views.ProductDetailView.as_view(),
@@ -58,4 +58,19 @@ urlpatterns = [
         views.BuyerDetailView.as_view(),
         name='buyerdetail'
     ), # переменная контекста в шаблоне 'buyer'
+    path(
+        'stockin/',
+        views.StockInListView.as_view(),
+        name='stockin'
+    ), # переменная контекста в шаблоне 'stockin'
+    path(
+        'stockout/',
+        views.StockOutListView.as_view(),
+        name='stockout'
+    ), # переменная контекста в шаблоне 'stockout'
+    # path(
+    #     'stockincreate/',
+    #     views.CtockInCreateView.as_view(),
+    #     name='stockincreate'
+    # ), # переменная контекста в шаблоне 'stockin_create'
 ] + debug_toolbar_urls()

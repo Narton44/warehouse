@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Sum, F
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView
-from .models import Stock, Product, OwnCompany, Supplier, Buyer
+from django.views.generic import ListView, DetailView, CreateView
+from .models import Stock, Product, OwnCompany, Supplier, Buyer, StockIn, StockOut
+# from .forms import CtockInCreationForm
 
 def index(request):
     prod_num = Product.objects.all().count()
@@ -35,30 +36,30 @@ class ProductListView(ListView):
     template_name = 'store/product_list.html'
     context_object_name = 'product_list'
 
-class OwnCompanyList(ListView):
+class OwnCompanyListView(ListView):
     model = OwnCompany
     template_name = 'store/own_company_list.html'
     context_object_name = 'owncompany_list'
 
-class SupplierList(StockListView):
+class SupplierListView(StockListView):
     model = Supplier
     template_name = 'store/supplier_list.html'
     context_object_name = 'supplier_list'
 
-class BuyerList(ListView):
+class BuyerListView(ListView):
     model = Buyer
     template_name = 'store/buyer_list.html'
     context_object_name = 'buyer_list'
 
-class StockProductList(ListView):
-    model = Product
-    template_name = 'store/stock_product_list.html'
-    context_object_name = 'stock_product_list'
+class StockDetailView(DetailView):
+    model = Stock
+    template_name = 'store/stock_detail.html'
+    context_object_name = 'stock'
 
-    def get_queryset(self): # Достаём товары только на данном складе
-        stock_id = self.kwargs['stock_id'] # Получаем stock_id из URL-параметра
-        stock = get_object_or_404(Stock,id=stock_id) # Находим склад по id (или по др. полю, напр., slug)
-        return Product.objects.filter(stock = stock)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['stock_product_list'] = Product.objects.filter(stock=self.object)
+        return context
     
 class ProductDetailView(DetailView):
     model = Product
@@ -79,3 +80,19 @@ class BuyerDetailView(DetailView):
     model = Buyer
     template_name = 'store/buyer_detail_view.html'
     context_object_name = 'buyer'
+
+class StockInListView(ListView):
+    model = StockIn
+    template_name = 'store/stockin_list.html'
+    context_object_name = 'stockin'
+
+class StockOutListView(ListView):
+    model = StockOut
+    template_name = 'store/stockout_list.html'
+    context_object_name = 'stockout'
+
+# class CtockInCreateView(CreateView):
+#     model = StockIn
+#     form_class = CtockInCreationForm
+#     context_object_name = ''
+#     template_name = ''

@@ -21,14 +21,14 @@
         <div class="col-sm-2">
           {% block sidebar %}
             <ul class="sidebar-nav">
-              <!-- <li><a href="">Весёлый склад 1.0</a></li> -->
+              <li><a href="{% url 'main' %}">Главная</a></li>
               <li><a href="{% url 'stocklist' %}">Склады</a></li>
               <li><a href="{% url 'productlist' %}">Товары</a></li>
               <li><a href="{% url 'supplierlist' %}">Поставщики</a></li>
               <li><a href="{% url 'buyerlist' %}">Покупатели</a></li>
               <li><a href="{% url 'owncompanylist' %}">Свои фирмы</a></li>
-              <li><a href="">Покупки(mepty)</a></li>
-              <li><a href="">Продажи(mepty)</a></li>
+              <li><a href="{% url 'stockin' %}">Покупки</a></li>
+              <li><a href="{% url 'stockout' %}">Продажи</a></li>
             </ul>
           {% endblock %}
         </div>

@@ -6,7 +6,7 @@
                 <ul>
                  {% for stock in stock_list %}
                   <li>
-                   <h3><a href="{% url 'stockproductlist' stock.id %}">{{ stock.name }}</a></h3>
+                   <h3><a href="{% url 'stockdetail' stock.id %}">{{ stock.name }}</a></h3>
                   </li>
                  {% endfor %}
                 </ul>

@@ -6,7 +6,11 @@
                 <ul>
                  {% for own_company in owncompany_list %}
                   <li>
-                   <h5><a href="{% url 'owncompanydetail' own_company.pk %}">{{ own_company.name }} , адрес: {{ own_company.adress }} , ИНН {{ own_company.inn }} , ОГРН {{ own_company.ogrn }}</a></h5>
+                   <h5><a href="{% url 'owncompanydetail' own_company.pk %}">{{ own_company.name }} , 
+                    адрес: {{ own_company.adress }} , 
+                    ИНН {{ own_company.inn }} , 
+                    ОГРН {{ own_company.ogrn }} , 
+                    emai:  {{ buyer.email }}</a></h5>
                   </li>
                  {% endfor %}
                 </ul>

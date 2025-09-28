@@ -5,6 +5,7 @@
             {% if product_list %}
                 <table class="table table-striped table-bordered table-hover">
                  <tr>
+                  <th><h4>Артикул</h4></th>
                   <th><h4>Наименование</h4></th>
                   <th><h4>Кол-во</h4></th>
                   <th><h4>Ед. изм.</h4></th>
@@ -13,6 +14,7 @@
                  </tr>
                  {% for product in product_list %}
                  <tr>
+                    <th><h5>{{ product.supplier_id }}</h5></th>
                     <th><h5><a href="{% url 'productdetail' product.pk %}">{{ product.name }}</a></h5></th>
                     <th><h5>{{ product.quantity }}</h5></th>
                     <th><h5>{{ product.measure_unit }}</h5></th> 

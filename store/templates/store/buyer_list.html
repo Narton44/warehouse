@@ -9,7 +9,8 @@
                    <h5><a href="{% url 'buyerdetail' buyer.pk %}">{{ buyer.name }},  
                     адрес: {{ buyer.adress }},  
                     ИНН {{ buyer.inn }}, 
-                    ОГРН {{ buyer.ogrn }}
+                    ОГРН {{ buyer.ogrn }},
+                    emai: {{ buyer.email }}
                    </a></h5>
                   </li>
                  {% endfor %}

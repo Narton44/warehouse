@@ -7,24 +7,22 @@ from .models import Stock, Product, OwnCompany, Supplier, Buyer, StockIn, StockO
 
 def index(request):
     prod_num = Product.objects.all().count()
-    stats = Product.objects.aggregate(
-        prod_quan = Sum('quantity'),
-        prod_total_cost = Sum(F('quantity') * F('price'))
-    )
+    # stats = Product.objects.aggregate(
+    #     prod_quan = Sum('quantity'),
+    #     prod_total_cost = Sum(F('quantity') * F('price'))
+    # )
 
-    prod_quan = stats['prod_quan'] or 0
-    prod_total_cost = stats['prod_total_cost'] or 0
+    # prod_quan = stats['prod_quan'] or 0
+    # prod_total_cost = stats['prod_total_cost'] or 0
 
     return render(
         request,
         'index.html',
         context=
             {
-              'prod_num':prod_num,
-              'prod_quan':prod_quan,
-              'prod_total_cost':prod_total_cost,
+                'prod_num':prod_num,
             },
-                )
+        )
 
 class StockListView(ListView):
     model = Stock

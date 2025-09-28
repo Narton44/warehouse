@@ -6,7 +6,11 @@
                 <ul>
                  {% for supplier in supplier_list %}
                   <li>
-                   <h5><a href="{% url 'supplierdetail' supplier.pk %}">{{ supplier.name }} , адрес: {{ supplier.adress }} , ИНН {{ supplier.inn }} , ОГРН {{ supplier.ogrn }}</a></h5>
+                   <h5><a href="{% url 'supplierdetail' supplier.pk %}">{{ supplier.name }} , 
+                    адрес: {{ supplier.adress }} , 
+                    ИНН {{ supplier.inn }} , 
+                    ОГРН {{ supplier.ogrn }} , 
+                    email: {{ supplier.email }}</a></h5>
                   </li>
                  {% endfor %}
                 </ul>

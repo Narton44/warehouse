@@ -26,13 +26,19 @@
               <li><a href="{% url 'productlist' %}">Товары</a></li>
               <li><a href="{% url 'supplierlist' %}">Поставщики</a></li>
               <li><a href="{% url 'buyerlist' %}">Покупатели</a></li>
+              <li><a href="{% url 'banklist' %}">Банки</a></li>
               <li><a href="{% url 'owncompanylist' %}">Свои фирмы</a></li>
               <li><a href="{% url 'stockin' %}">Покупки</a></li>
               <li><a href="{% url 'stockout' %}">Продажи</a></li>
             </ul>
           {% endblock %}
         </div>
-        <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+        <div class="col-sm-10 ">{% block content %}
+           <div class="RP-SCRIPT">         
+            <a class="RP-LINK" href="https://radiopotok.ru/radio/1260">SOUNDPARK DEEP</a>       
+          </div>       
+          <script defer src="https://radiopotok.ru/f/script6.1/1260.js" charset="UTF-8"></script>
+          {% endblock %}</div>
 
         {% block pagination %}
   {% if is_paginated %}

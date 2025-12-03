@@ -2,7 +2,7 @@ from django.db import models
 from models import StockIn, Product, Quantity, Price
 
 
-class StockInItem(models.Model): # сам перечень товаров, указанный в документе проихода StockIn
+class StockinProductList(models.Model): # сам перечень товаров, указанный в документе проихода StockIn
     
     stockin = models.ForeignKey(
         StockIn,

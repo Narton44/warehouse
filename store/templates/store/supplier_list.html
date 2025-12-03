@@ -3,15 +3,22 @@
         {% block content %}
         <h1> Поставщики </h1>
             {% if supplier_list %}
-                <ul>
+                <table class="table table-striped table-bordered table-hover">
+                 <tr>
+                  <th><h4>Название</h4></th>
+                  <th><h4>Адрес</h4></th>
+                  <th><h4>ИНН</h4></th>
+                  <th><h4>ОГРН</h4></th>
+                  <th><h4>email</h4></th>
+                 </tr>
                  {% for supplier in supplier_list %}
-                  <li>
-                   <h5><a href="{% url 'supplierdetail' supplier.pk %}">{{ supplier.name }} , 
-                    адрес: {{ supplier.adress }} , 
-                    ИНН {{ supplier.inn }} , 
-                    ОГРН {{ supplier.ogrn }} , 
-                    email: {{ supplier.email }}</a></h5>
-                  </li>
+                 <tr>
+                    <th><h5><a href="{% url 'supplierdetail' supplier.pk %}">{{ supplier.name }}</h5></th>
+                    <th><h5>{{ supplier.adress }}</a></h5></th>
+                    <th><h5>{{ supplier.inn }}</h5></th>
+                    <th><h5>{{ supplier.ogrn }}</h5></th> 
+                    <th><h5>{{ supplier.email }}</h5></th>
+                  </tr>
                  {% endfor %}
                 </ul>
             {% else %}

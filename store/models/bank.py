@@ -40,6 +40,12 @@ class Bank(models.Model):
         unique=True,
     )
 
+    c_a = models.CharField(
+        verbose_name='К/С',
+        max_length=20,
+        default=''
+    )
+
     def __str__(self):
         return self.name
     

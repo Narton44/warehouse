@@ -1,14 +1,20 @@
 from django.db import models
 from .supplier import Supplier
 from .owncompany import OwnCompany
-from .product import Product
 
 
 class StockIn(models.Model): # документ прихода товаров на склад, без перечня товаров
 
-    number = models.SlugField(
-        verbose_name='№',
+    waybill_number = models.SlugField(
+        verbose_name='№ накладной',
         max_length=15,
+        default='',
+    )
+
+    invoice_number = models.SlugField(
+        verbose_name='№ счёта-фактуры',
+        max_length=15,
+        default='',
     )
 
     in_date = models.DateTimeField(
@@ -29,6 +35,18 @@ class StockIn(models.Model): # документ прихода товаров н
         max_length=50,
         verbose_name='Покупатель',
     )
+
+    stock_in_total = models.IntegerField(
+        verbose_name='Сумма документа',
+        default=0,
+    )
+
+    comment = models.CharField(
+        max_length=50,
+        verbose_name='Комментарий',
+        default='',
+    )
+
 
     def __str__(self):
         return f'{self.number} от {self.in_date}, ({self.supplier})'

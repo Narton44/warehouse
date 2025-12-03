@@ -4,11 +4,17 @@
         <h1> карточка поставщика </h1>
                 <ul>
                   <li><h5> {{ supplier.name }}</h5></li>
+                  <li><h5> email:  {{ supplier.email }}</h5></li>
                   <li><h5> Адрес:  {{ supplier.adress }}</h5></li>    
                   <li><h5> ИНН:  {{ supplier.inn }}</h5></li>
                   <li><h5> ОГРН:  {{ supplier.ogrn }}</h5></li>
                   <li><h5> тел.:  {{ supplier.phone_number }}</h5></li>
                   <li><h5> email:  {{ supplier.email }}</h5></li>
+                  <li><h5> Р/С :{{ supplier.bank_account }} в банке:</h5></li>
+                  <li><h5> {{ supplier.bank }}</h5></li>
+                  <li><h5> Бик: {{ supplier.bank.bank_id }}</h5></li>
+                  <li><h5> К/С: {{ supplier.bank.c_a }}</h5></li>
+                  <li><h5> ИНН: {{ supplier.bank.inn }}</h5></li>
+                  <li><h5> ОГРН: {{ supplier.bank.ogrn }}</h5></li>
                 </ul>
-          </table>
         {% endblock %}

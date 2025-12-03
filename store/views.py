@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Sum, F
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Stock, Product, OwnCompany, Supplier, Buyer, StockIn, StockOut
+from .models import Stock, Product, OwnCompany, Supplier, Buyer, StockIn, StockOut, Bank
 # from .forms import CtockInCreationForm
 
 def index(request):
@@ -38,6 +38,11 @@ class OwnCompanyListView(ListView):
     model = OwnCompany
     template_name = 'store/own_company_list.html'
     context_object_name = 'owncompany_list'
+
+class BankListView(ListView):
+    model = Bank
+    template_name = 'store/bank_list.html'
+    context_object_name = 'bank_list'
 
 class SupplierListView(StockListView):
     model = Supplier
@@ -84,13 +89,13 @@ class StockInListView(ListView):
     template_name = 'store/stockin_list.html'
     context_object_name = 'stockin'
 
+class CtockInCreateView(ListView):
+    pass
+
+class CtockInDetailView(DetailView):
+    pass
+
 class StockOutListView(ListView):
     model = StockOut
     template_name = 'store/stockout_list.html'
     context_object_name = 'stockout'
-
-# class CtockInCreateView(CreateView):
-#     model = StockIn
-#     form_class = CtockInCreationForm
-#     context_object_name = ''
-#     template_name = ''

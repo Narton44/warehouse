@@ -3,15 +3,22 @@
         {% block content %}
         <h1> Свои фирмы </h1>
             {% if owncompany_list %}
-                <ul>
+                <table class="table table-striped table-bordered table-hover">
+                 <tr>
+                  <th><h4>Название</h4></th>
+                  <th><h4>Адрес</h4></th>
+                  <th><h4>ИНН</h4></th>
+                  <th><h4>ОГРН</h4></th>
+                  <th><h4>email</h4></th>
+                 </tr>
                  {% for own_company in owncompany_list %}
-                  <li>
-                   <h5><a href="{% url 'owncompanydetail' own_company.pk %}">{{ own_company.name }} , 
-                    адрес: {{ own_company.adress }} , 
-                    ИНН {{ own_company.inn }} , 
-                    ОГРН {{ own_company.ogrn }} , 
-                    emai:  {{ buyer.email }}</a></h5>
-                  </li>
+                 <tr>
+                    <th><h5><a href="{% url 'owncompanydetail' own_company.pk %}">{{ own_company.name }}</h5></th>
+                    <th><h5>{{ own_company.adress }}</a></h5></th>
+                    <th><h5>{{ own_company.inn }}</h5></th>
+                    <th><h5>{{ own_company.ogrn }}</h5></th> 
+                    <th><h5>{{ own_company.email }}</h5></th>
+                  </tr>
                  {% endfor %}
                 </ul>
             {% else %}

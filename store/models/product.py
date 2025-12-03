@@ -28,6 +28,8 @@ class Product(models.Model):
     
     supplier_id = models.CharField(
         max_length=30,
+        unique=True,
+        primary_key=True,
         verbose_name='артикул',
         )
     

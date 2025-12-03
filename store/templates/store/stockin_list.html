@@ -6,18 +6,22 @@
                 <table class="table table-striped table-bordered table-hover">
                  <tr>
                   <th><h4>Дата</h4></th>
-                  <th><h4>Номер</h4></th>
+                  <th><h4>Накладная</h4></th>
+                  <th><h4>Счёт-фактура</h4></th>
                   <th><h4>Поставщик</h4></th>
                   <th><h4>Покупатель</h4></th>
                   <th><h4>Сумма</h4></th>
+                  <th><h4>Комментарий</h4></th>
                  </tr>
                  {% for doc in stockin %}
                  <tr>
                     <th><h5><a href="">{{ stockin.in_date }}</a></h5></th>
-                    <th><h5>{{ stockin.number }}</h5></th>
+                    <th><h5>{{ stockin.waybill_number }}</h5></th>
+                    <th><h5>{{ stockin.invoice_number }}</h5></th>
                     <th><h5>{{ stockin.supplier }}</h5></th> 
-                    <th><h5>{{ stockin.buyer }} р.</h5></th>
-                    <!-- <th><h5>{{ stockin.total_sum }}</h5></th> -->
+                    <th><h5>{{ stockin.buyer }}</h5></th>
+                    <th><h5>{{ stockin.stock_in_total }}</h5></th>
+                    <th><h5>{{ stockin.comment }}</h5></th>
                   </tr>
                  {% endfor %}
                 </table>

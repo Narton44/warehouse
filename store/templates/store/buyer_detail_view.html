@@ -4,11 +4,16 @@
         <h1> карточка покупателя </h1>
                 <ul>
                   <li><h5> {{ buyer.name }}</h5></li>
+                  <li><h5> emai:  {{ buyer.email }}</h5></li>
                   <li><h5> Адрес:  {{ buyer.adress }}</h5></li>    
                   <li><h5> ИНН:  {{ buyer.inn }}</h5></li>
                   <li><h5> ОГРН:  {{ buyer.ogrn }}</h5></li>
                   <li><h5> тел.:  {{ buyer.phone_number }}</h5></li>
-                  <li><h5> emai:  {{ buyer.email }}</h5></li>
+                  <li><h5> Р/С :{{ buyer.bank_account }} в банке:</h5></li>
+                  <li><h5> {{ buyer.bank }}</h5></li>
+                  <li><h5> Бик: {{ buyer.bank.bank_id }}</h5></li>
+                  <li><h5> К/С: {{ buyer.bank.c_a }}</h5></li>
+                  <li><h5> ИНН: {{ buyer.bank.inn }}</h5></li>
+                  <li><h5> ОГРН: {{ buyer.bank.ogrn }}</h5></li>
                 </ul>
-          </table>
         {% endblock %}

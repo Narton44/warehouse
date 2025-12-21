@@ -1,7 +1,7 @@
 from django.db import models
 
 class Stock(models.Model):
-
+    """Модель складов нашего предприятия (автозапчасти, электрика, сантехника, хозтовары и т.д.)"""
     name = models.CharField(
         verbose_name='склад',
         unique=True,

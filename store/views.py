@@ -1,20 +1,14 @@
 from django.shortcuts import render
 from django.db.models import Sum, F
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import TemplateView,ListView, DetailView, CreateView
 from .models import Stock, Product, OwnCompany, Supplier, Buyer, StockIn, StockOut, Bank
-# from .forms import CtockInCreationForm
+
 
 def index(request):
-    prod_num = Product.objects.all().count()
-    # stats = Product.objects.aggregate(
-    #     prod_quan = Sum('quantity'),
-    #     prod_total_cost = Sum(F('quantity') * F('price'))
-    # )
 
-    # prod_quan = stats['prod_quan'] or 0
-    # prod_total_cost = stats['prod_total_cost'] or 0
-
+    prod_num = Product.objects.all().count()          # считаем общее количество наименований товара на складе
+    
     return render(
         request,
         'index.html',
@@ -23,6 +17,12 @@ def index(request):
                 'prod_num':prod_num,
             },
         )
+
+# class Index(ListView):
+#     model = Product
+#     template_name = 'index.html'
+#     # queryset = Product.objects.all().count()
+#     context_object_name = 'prod_num'
 
 class StockListView(ListView):
     model = Stock

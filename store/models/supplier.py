@@ -1,7 +1,7 @@
 from django.db import models
 
 class Supplier(models.Model):
-
+    """Модель поставщиков"""
     name = models.CharField(
         verbose_name='название',
         max_length=50,

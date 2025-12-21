@@ -6,8 +6,8 @@ from .buyer import Buyer
 from .bank import Bank
 from .stockin import StockIn
 from .stockout import StockOut
-from .quantity import Quantity
-from .price import Price
+from .stockinproductlist import StockInProductList
+from .stockoutproductlist import StockOutProductList
 
 __all__ = (
     "Stock",
@@ -18,6 +18,6 @@ __all__ = (
     "Bank",
     "StockIn",
     "StockOut",
-    "Quantity",
-    "Price",
+    'StockInProductList',
+    'StockOutProductList',
 )

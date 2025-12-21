@@ -2,7 +2,7 @@ from django.db import models
 from .stock import Stock
 
 class Product(models.Model):
-
+    """Модель товара """
     MEASURE_UNIT = [
         ("шт.", "шт."),
         ("кг.", "кг."),

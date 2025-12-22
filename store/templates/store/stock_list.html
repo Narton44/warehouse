@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
         {% block content %}
-        <h1> Склады </h1> 
+        <h1> Склады </h1>
+        <h4><a href="{% url 'stock_create' %}">Создать склад</a></h4>
             {% if stock_list %}
                 <ul>
                  {% for stock in stock_list %}

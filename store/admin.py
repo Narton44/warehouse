@@ -33,8 +33,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(StockIn)
 class StockInAdmin(admin.ModelAdmin):
-    list_display = ['in_waybill_number', 'in_invoice_number', 'in_date','supplier', 'buyer', 'comment',]
-    list_filter = ['in_date','supplier', 'buyer', 'comment',]
+    list_display = ['in_waybill_number', 'in_invoice_number', 'in_waybill_date', 'in_invoice_date', 'supplier', 'buyer', 'comment',]
+    list_filter = ['in_waybill_date', 'in_invoice_date','supplier', 'buyer', 'comment',]
     search_fields = ['supplier', 'buyer', 'comment',]
 
 

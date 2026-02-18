@@ -6,7 +6,7 @@ from store.forms import StockCreationForm
 class StockCreateView(CreateView):
     model = Stock
     form_class = StockCreationForm
-    template_name = 'store/stockadd.html'
+    template_name = 'store/stock_add.html'
     success_url = reverse_lazy('stocklist')
 
     def form_valid(self,form):

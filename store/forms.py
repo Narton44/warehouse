@@ -5,11 +5,38 @@ from . models import Stock, StockIn, StockOut, Product
 class StockCreationForm(forms.ModelForm):
     
     class Meta:
+
         model = Stock
-        fields = ['name', 'owner', 'adress']
+        fields = [
+            'name',
+            'owner',
+            'adress',
+            ]
 
 class ProductCreationForm(forms.ModelForm):
     
     class Meta:
+
         model = Product
-        fields = ['name', 'stock', 'supplier_id', 'measure_unit',]
+        fields = [
+            'name',
+            'stock',
+            'supplier_id',
+            'measure_unit',
+            ]
+
+class StockInCreationForm(forms.ModelForm):
+
+    class Meta:
+
+        model = StockIn
+        fields = [
+            'in_waybill_number',
+            'in_invoice_number',
+            'in_waybill_date',
+            'in_invoice_date',
+            'supplier',
+            'buyer',
+            'is_posted',
+            'comment',
+            ]

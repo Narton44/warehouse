@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}<h3 style="text-align: center;">Создание нового склада</h3>{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+    <!-- <button type="{% url 'stocklist' %}">Отмена</button> -->
+    <a href="{% url 'stocklist' %}">Отмена</a>
+</form>
+
+<!-- <form method="post">
+    {% csrf_token %}
+    <label for="name">Склад</label>
+    <input id="name" type = 'text' name="name" value="Введите название склада">
+
+    <label for="name">Владелец склада</label>
+    <input id="name" type = 'text' name="owner" value="Владелец склада">
+
+    <label for="name">Адрес склада</label>
+    <input id="name" type = 'text' name="adress" value="Адрес склада">
+
+    <input type="submit" value="сохранить">
+</form> -->
+{% endblock %}

@@ -2,6 +2,7 @@
 
         {% block content %}
         <h1> все покупки </h1>
+        <h4><a href="{% url 'stockincreate' %}">Новое поступление</a></h4>
             {% if stockin %}
                 <table class="table table-striped table-bordered table-hover">
                  <tr>

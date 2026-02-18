@@ -2,6 +2,7 @@
 
         {% block content %}
         <h1> все товары </h1>
+        <h4><a href="{% url 'product_create' %}">Создать товар</a></h4>
             {% if product_list %}
                 <table class="table table-striped table-bordered table-hover">
                  <tr>

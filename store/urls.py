@@ -3,103 +3,110 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from store import views
 
 urlpatterns = [
-    path(
+    path( # начальная страница
         '',
         views.Index.as_view(),
         name='main'
         ),
 
-    path(
+    path( # список складов
         'stocks/',
         views.StockListView.as_view(),
         name='stocklist'
         ),
 
-    path(
+    path( # создание склада
         'stocks/create',
         views.StockCreateView.as_view(),
         name='stock_create'
         ),
 
-    path(
+    path( # список товаров
+
         'products/',
         views.ProductListView.as_view(),
         name='productlist'
     ),
 
-    path(
+    path(  # создание карточки товара
+        'products/create',
+        views.ProductCreateView.as_view(),
+        name='product_create'
+        ),
+
+    path(  # список своих компаний
         'owncompanies/',
         views.OwnCompanyListView.as_view(),
         name='owncompanylist'
     ),
 
-    path(
+    path( # список поставщиков
         'suppliers/',
         views.SupplierListView.as_view(),
         name='supplierlist'
     ),
 
-    path(
+    path(  # список покупателей
         'buyers/',
         views.BuyerListView.as_view(),
         name='buyerlist'
     ),
 
-    path(
+    path(  # список банков
         'banks/',
         views.BankListView.as_view(),
         name='banklist'
     ),
 
-    path(
+    path( # детальная информация о складе
         'store/<int:pk>',
         views.StockDetailView.as_view(),
         name='stockdetail'
     ),
 
-    path(
+    path( # детальная информация о товаре
         'products/<int:pk>',
         views.ProductDetailView.as_view(),
         name='productdetail'
     ),
 
-    path(
+    path(  # детальная информация о своей фирме
         'owncompany/<int:pk>',
         views.OwnCompanyDetailView.as_view(),
         name='owncompanydetail'
     ),
 
-    path(
+    path(  # детальная информация о поставщике
         'supplier/<int:pk>',
         views.SupplierDetailView.as_view(),
         name='supplierdetail'
     ),
 
-    path(
+    path(  # детальная информация о покупателе
         'buyer/<int:pk>',
         views.BuyerDetailView.as_view(),
         name='buyerdetail'
     ),
 
-    path(
+    path(  # список покупок
         'stockin/',
         views.StockInListView.as_view(),
         name='stockin'
     ),
 
-    path(
+    path( # создание покупки
         'stockincreate/',
         views.StockInCreateView.as_view(),
         name='stockincreate'
     ),
 
-    path(
+    path( # детальная информация о покупке
         'stockin/<int:pk>',
         views.StockInDetailView.as_view(),
-        name='stockincreate'
+        name='stockindetail'
     ),
 
-    path(
+    path( # список продаж
         'stockout/',
         views.StockOutListView.as_view(),
         name='stockout'

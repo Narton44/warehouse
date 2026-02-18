@@ -13,7 +13,7 @@ class Product(models.Model):
         ("т.", "т."),
         ("куб.м.", "куб.м."),
     ]
-    
+
     name = models.CharField(
         max_length=50,
         unique=True,
@@ -25,19 +25,19 @@ class Product(models.Model):
         on_delete=models.PROTECT,
         verbose_name='склад',
         )
-    
+
     supplier_id = models.CharField(
         max_length=30,
         unique=True,
         primary_key=True,
         verbose_name='артикул',
         )
-    
+
     measure_unit = models.CharField(
         choices=MEASURE_UNIT,
         verbose_name='ед.изм.',
         )
-    
+
     def __str__(self):
         return self.name
 

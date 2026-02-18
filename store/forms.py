@@ -7,3 +7,9 @@ class StockCreationForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields = ['name', 'owner', 'adress']
+
+class ProductCreationForm(forms.ModelForm):
+    
+    class Meta:
+        model = Product
+        fields = ['name', 'stock', 'supplier_id', 'measure_unit',]

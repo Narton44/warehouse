@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
+{% block title %}<h3 style="text-align: center;"> карточка товара </h3>{% endblock %}
+
+
         {% block content %}
-        <h1> карточка товара </h1>
                 <ul>
+                  <li><h5> Наименование: {{ product.name }}</h5></li>
                   <li><h5> Артикул: {{ product.supplier_id }}</h5></li>
-                  <li><h5> Наименование: {{ product.name }}</h5></li>    
+                  <li><h5> Склад: {{ product.stock }}</h5></li>
+                  <li><h5> Кол-во: {{ product.quantity }}</h5></li>
                   <li><h5> Ед. изм.:{{ product.measure_unit }}</h5></li>
+                  <li><h5> Цена: {{ product.price }}</h5></li>
                 </ul>
           </table>
         {% endblock %}

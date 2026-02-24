@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from . models import Stock, StockIn, Bank, Product, OwnCompany
 
+
 class StockCreationForm(forms.ModelForm):
     
     class Meta:

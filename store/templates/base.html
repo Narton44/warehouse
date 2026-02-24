@@ -1,24 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
+{% load django_bootstrap5 static %}
+
   <head>
     {% block title %}<title></title>{% endblock %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Добавление дополнительного статического CSS файла -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    {% bootstrap_css %}
   </head>
 
   <body>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
+
           {% block sidebar %}
             <ul class="sidebar-nav">
               <li><a href="{% url 'main' %}">Главная</a></li>
@@ -32,13 +36,15 @@
               <li><a href="{% url 'stockout' %}">Продажи</a></li>
             </ul>
           {% endblock %}
+
         </div>
         <div class="col-sm-10 ">{% block content %}
            <div class="RP-SCRIPT">         
             <a class="RP-LINK" href="https://radiopotok.ru/radio/1260">SOUNDPARK DEEP</a>       
           </div>       
           <script defer src="https://radiopotok.ru/f/script6.1/1260.js" charset="UTF-8"></script>
-          {% endblock %}</div>
+          {% endblock %}
+        </div>
 
         {% block pagination %}
   {% if is_paginated %}

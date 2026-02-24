@@ -28,16 +28,22 @@ urlpatterns = [
         name='productlist'
     ),
 
-    path(  # создание карточки товара
+    path( # создание карточки товара
         'products/create',
         views.ProductCreateView.as_view(),
         name='product_create'
         ),
 
-    path(  # список своих компаний
+    path( # список своих компаний
         'owncompanies/',
         views.OwnCompanyListView.as_view(),
         name='owncompanylist'
+    ),
+
+    path( # создание своей компании
+        'owncompanies/create',
+        views.OwnCompanyCreateView.as_view(),
+        name='owncompanycreate'
     ),
 
     path( # список поставщиков
@@ -46,16 +52,22 @@ urlpatterns = [
         name='supplierlist'
     ),
 
-    path(  # список покупателей
+    path( # список покупателей
         'buyers/',
         views.BuyerListView.as_view(),
         name='buyerlist'
     ),
 
-    path(  # список банков
+    path( # список банков
         'banks/',
         views.BankListView.as_view(),
         name='banklist'
+    ),
+
+    path( # создание банка
+        'banks/create',
+        views.BankCreateView.as_view(),
+        name='bankcreate'
     ),
 
     path( # детальная информация о складе
@@ -70,25 +82,25 @@ urlpatterns = [
         name='productdetail'
     ),
 
-    path(  # детальная информация о своей фирме
+    path( # детальная информация о своей фирме
         'owncompany/<int:pk>',
         views.OwnCompanyDetailView.as_view(),
         name='owncompanydetail'
     ),
 
-    path(  # детальная информация о поставщике
+    path( # детальная информация о поставщике
         'supplier/<int:pk>',
         views.SupplierDetailView.as_view(),
         name='supplierdetail'
     ),
 
-    path(  # детальная информация о покупателе
+    path( # детальная информация о покупателе
         'buyer/<int:pk>',
         views.BuyerDetailView.as_view(),
         name='buyerdetail'
     ),
 
-    path(  # список покупок
+    path( # список покупок
         'stockin/',
         views.StockInListView.as_view(),
         name='stockin'

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
+{% block title %}<h3 style="text-align: center;">Все склады </h3>{% endblock %}
+
         {% block content %}
-        <h1> Склады </h1>
         <h4><a href="{% url 'stock_create' %}">Создать склад</a></h4>
             {% if stock_list %}
                 <ul>
                  {% for stock in stock_list %}
                   <li>
-                   <h3><a href="{% url 'stockdetail' stock.id %}">{{ stock.name }}</a></h3>
+                   <h4><a href="{% url 'stockdetail' stock.id %}">{{ stock.name }}</a></h4>
                   </li>
                  {% endfor %}
                 </ul>

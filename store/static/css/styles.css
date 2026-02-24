@@ -1,0 +1,51 @@
+/* Глобальный размер для всего тела страницы */
+body {
+  font-size: 14px;
+}
+
+.block-content {
+  font-family: sans-serif, 'Roboto', 'Arial';
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.4;
+  color: #212121;
+}
+
+
+.block-content .table th,
+.block-content .table td {
+  height: 25px;
+  vertical-align: middle;
+  padding: 4px 8px; /* уменьшите padding, если нужно */
+}
+
+/* Для конкретных элементов */
+.sidebar-nav {
+  list-style: none; /* убираем маркеры */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li a {
+  display: block; /* ссылка занимает всю ширину */
+  padding: 10px 15px; /* отступы внутри ссылки */
+  text-decoration: none; /* убираем подчёркивание */
+  color: #333; /* цвет текста */
+  font-size: 13px;
+}
+
+.sidebar-nav li.active a {
+  background-color: #007bff; /* фон активного пункта */
+  color: white; /* цвет текста активного пункта */
+}
+
+.sidebar-nav li a:hover:not(.active) {
+  background-color: #041525; /* фон при наведении */
+}
+
+
+.RP-LINK {
+  font-size: 16px;
+  font-weight: bold;
+}

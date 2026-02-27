@@ -8,6 +8,7 @@ from .stockin import StockIn
 from .stockout import StockOut
 from .stockinproductlist import StockInProductList
 from .stockoutproductlist import StockOutProductList
+from .price import Price
 
 __all__ = (
     "Stock",
@@ -20,4 +21,5 @@ __all__ = (
     "StockOut",
     'StockInProductList',
     'StockOutProductList',
+    'Price',
 )

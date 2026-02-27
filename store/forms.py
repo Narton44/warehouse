@@ -1,21 +1,21 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from . models import Stock, StockIn, Bank, Product, OwnCompany
+from . models import Stock, StockIn, Bank, Product, OwnCompany, Supplier, Buyer
 
 
-class StockCreationForm(forms.ModelForm):
+class StockCreationForm(forms.ModelForm): # форма создания склада
     
     class Meta:
         model = Stock
         fields = ['name', 'owner', 'adress']
 
-class ProductCreationForm(forms.ModelForm):
-    
+class ProductCreationForm(forms.ModelForm): # форма создания карточки товара
+
     class Meta:
         model = Product
         fields = ['name', 'stock', 'supplier_id', 'measure_unit',]
 
-class StockInCreationForm(forms.ModelForm):
+class StockInCreationForm(forms.ModelForm): # форма создания поступления товаров
 
     class Meta:
         model = StockIn
@@ -30,7 +30,7 @@ class StockInCreationForm(forms.ModelForm):
             'comment',
         ]
 
-class OwnCompanyCreationForm(forms.ModelForm):
+class OwnCompanyCreationForm(forms.ModelForm): # форма создания своей фирмы
 
     class Meta:
         model = OwnCompany
@@ -45,7 +45,7 @@ class OwnCompanyCreationForm(forms.ModelForm):
             'bank_account',
         ]
 
-class BankCreationForm(forms.ModelForm):
+class BankCreationForm(forms.ModelForm): # форма создания банка
 
     class Meta:
         model = Bank
@@ -58,4 +58,34 @@ class BankCreationForm(forms.ModelForm):
             'inn',
             'ogrn',
             'c_a',
+        ]
+
+class SupplierCreationForm(forms.ModelForm): # форма создания поставщика
+
+    class Meta:
+        model = Supplier
+        fields = [
+            'name',
+            'adress',
+            'email',
+            'phone_number',
+            'inn',
+            'ogrn',
+            'bank',
+            'bank_account',
+        ]
+
+class BuyerCreationForm(forms.ModelForm): # форма создания покупателя
+
+    class Meta:
+        model = Buyer
+        fields = [
+            'name',
+            'adress',
+            'email',
+            'phone_number',
+            'inn',
+            'ogrn',
+            'bank',
+            'bank_account',
         ]

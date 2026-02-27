@@ -1,5 +1,6 @@
 from django.db import models
 from .stock import Stock
+from .stockin import StockIn
 
 class Product(models.Model):
     """Модель товара """
@@ -24,6 +25,12 @@ class Product(models.Model):
         Stock,
         on_delete=models.PROTECT,
         verbose_name='склад',
+        )
+    
+    stockin = models.ForeignKey(
+        StockIn,
+        on_delete=models.PROTECT,
+        verbose_name='поступление',
         )
 
     supplier_id = models.CharField(

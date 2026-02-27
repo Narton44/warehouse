@@ -9,13 +9,13 @@
 
                 <table class="table table-striped table-bordered table-hover w-100">
                  <tr>
-                  <th>Наименование</th>
-                  <th>Артикул</th>
-                  <th>Склад</th>
-                  <th>Кол-во</th>
-                  <th>Ед. изм.</th>
-                  <th>Цена за единицу</th>
-                  <th>Всего</th>
+                  <th style="text-align: center;">Наименование</th>
+                  <th style="text-align: center;">Склад</th>
+                  <th style="text-align: center;">Артикул</th>
+                  <th style="text-align: center;">Кол-во</th>
+                  <th style="text-align: center;">Ед. изм.</th>
+                  <th style="text-align: center;">Цена за единицу</th>
+                  <th style="text-align: center;">Всего</th>
                  </tr>
                  {% for product in product_list %}
                     <th><a href="{% url 'productdetail' product.pk %}">{{ product.name }}</a></th>

@@ -52,10 +52,22 @@ urlpatterns = [
         name='supplierlist'
     ),
 
+    path( # создание поставщика
+        'suppliers/create',
+        views.SupplierCreateView.as_view(),
+        name='suppliercreate'
+    ),
+
     path( # список покупателей
         'buyers/',
         views.BuyerListView.as_view(),
         name='buyerlist'
+    ),
+
+    path( # создание покупателя
+        'buyers/create',
+        views.BuyerCreateView.as_view(),
+        name='buyercreate'
     ),
 
     path( # список банков

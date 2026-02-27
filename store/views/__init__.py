@@ -18,6 +18,8 @@ from .stockcreateview import StockCreateView
 from .productcreateview import ProductCreateView
 from .owncompanycreateview import OwnCompanyCreateView
 from .bankcreateview import BankCreateView
+from .suppliercreateview import SupplierCreateView
+from .buyercreateview import BuyerCreateView
 
 __all__ = (
     "Index",
@@ -40,4 +42,6 @@ __all__ = (
     "ProductCreateView",
     "OwnCompanyCreateView",
     "BankCreateView",
+    "SupplierCreateView",
+    "BuyerCreateView",
 )

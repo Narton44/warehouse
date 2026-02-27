@@ -35,3 +35,10 @@ class Price: # класс истории изменения цен
     date = models.DateField(
         auto_now_add=True,
     )
+
+    def __str__(self):
+        pass
+
+    class Meta:
+        verbose_name = 'цены'
+        ordering = ['date']

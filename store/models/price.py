@@ -1,11 +1,11 @@
 from django.db import models
 from store.models import Product
 
-class Price: # класс истории изменения цен
+class Price(models.Model): # класс истории изменения цен
 
     product = models.ForeignKey(
         Product,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
     )
 
     purchase_price = models.DecimalField(

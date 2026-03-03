@@ -1,10 +1,10 @@
 from django.db import models
 from .supplier import Supplier
 from .owncompany import OwnCompany
+from django.urls import reverse
 
 
-class StockIn(models.Model): 
-    """документ прихода товаров на склад, без перечня товаров"""
+class StockIn(models.Model): # документ прихода товаров на склад, без перечня товаров
 
     in_waybill_number = models.SlugField( # номер входящей накладной
         verbose_name='№ накладной',
@@ -52,7 +52,12 @@ class StockIn(models.Model):
         default='',
     )
 
+    # def get_absolute_url(self):
+
+    #     return reverse('model-detail-view', args=[str(self.id)])
+
     def __str__(self):
+
         return f'{self.in_waybill_number} от {self.in_date}, ({self.supplier})'
 
     class Meta:

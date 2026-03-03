@@ -4,9 +4,11 @@
 
 {% block content %}
 <form method="post">
+
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Сохранить</button>
     <a href="{% url 'stocklist' %}">Отмена</a>
+
 </form>
 {% endblock %}

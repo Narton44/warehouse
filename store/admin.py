@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Stock, 
     Product,
-    Price,
+    PriceHistoryDB,
     Bank,
     Buyer,
     OwnCompany,
@@ -45,7 +45,7 @@ admin.site.register(Product)
 admin.site.register(Bank)
 admin.site.register(Buyer)
 admin.site.register(OwnCompany)
-admin.site.register(Price)
+admin.site.register(PriceHistoryDB)
 admin.site.register(StockOut)
 admin.site.register(Supplier)
 admin.site.register(StockIn)

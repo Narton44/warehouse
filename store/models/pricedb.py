@@ -1,11 +1,13 @@
 from django.db import models
 from store.models import Product
+from simple_history.models import HistoricalRecords
 
-class Price(models.Model): # класс истории изменения цен
+class PriceHistoryDB(models.Model): # класс истории изменения цен
 
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
+        related_name='prod'
     )
 
     purchase_price = models.DecimalField(
@@ -31,6 +33,16 @@ class Price(models.Model): # класс истории изменения цен
         null=True,
         blank=True,
     )
+
+    quantity = models.DecimalField(
+        'количество',
+        max_digits=12,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+
+    history = HistoricalRecords()
 
     date = models.DateField(
         auto_now_add=True,

@@ -20,6 +20,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('store/', include('store.urls')), #направляет запросы, начинающиеся с 'store/' к модулю store.urls
     path('', RedirectView.as_view(url='store/', permanent=True)), #перенаправляет корневой URL (127.0.0.1:8000)
                                                                     # на URL (127.0.0.1:8000/store/)

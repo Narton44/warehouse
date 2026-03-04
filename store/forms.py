@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from . models import Stock, StockIn, Bank, Product, OwnCompany, Supplier, Buyer
+from . models import Stock, StockIn, Bank, Product, OwnCompany, Supplier, Buyer, StockInProductItem
 
 
 class StockCreationForm(forms.ModelForm): # форма создания склада
@@ -13,7 +13,7 @@ class ProductCreationForm(forms.ModelForm): # форма создания кар
 
     class Meta:
         model = Product
-        fields = ['name', 'stock', 'supplier_id', 'measure_unit',]
+        fields = ['name', 'stock', 'supplier_id', 'measure_unit', 'VAT_tax', 'customs_declaration',]
 
 class StockInCreationForm(forms.ModelForm): # форма создания поступления товаров
 

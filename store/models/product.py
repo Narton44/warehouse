@@ -1,9 +1,10 @@
 from django.db import models
-from .stock import Stock
-from .stockin import StockIn
+from . import Stock
+from simple_history.models import HistoricalRecords
 
-class Product(models.Model):
-    """Модель товара """
+
+class Product(models.Model): # Модель товара
+
     MEASURE_UNIT = [
         ("шт.", "шт."),
         ("кг.", "кг."),
@@ -13,9 +14,10 @@ class Product(models.Model):
         ("уп.", "уп."),
         ("т.", "т."),
         ("куб.м.", "куб.м."),
+        ("пог.м.", "пог.м."),
     ]
 
-    name = models.CharField(
+    name = models.CharField( # наименование товара
         max_length=50,
         unique=True,
         verbose_name='наименование',      
@@ -23,27 +25,37 @@ class Product(models.Model):
 
     stock = models.ForeignKey(
         Stock,
-        on_delete=models.PROTECT,
         verbose_name='склад',
-        )
-    
-    stockin = models.ForeignKey(
-        StockIn,
         on_delete=models.PROTECT,
-        verbose_name='поступление',
-        )
+        related_name='native_stock',
+    )
 
-    supplier_id = models.CharField(
+    supplier_id = models.CharField( # артикул товара
         max_length=30,
         unique=True,
         primary_key=True,
         verbose_name='артикул',
         )
 
-    measure_unit = models.CharField(
+    measure_unit = models.CharField( # единица измерения товара
         choices=MEASURE_UNIT,
         verbose_name='ед.изм.',
         )
+
+    VAT_tax = models.SmallIntegerField( # ставка НДС
+        verbose_name='НДС',
+        null=True,
+        blank=True,
+        )
+
+    customs_declaration = models.CharField( # № таможенной декларации
+        verbose_name='таможенная декларация',
+        null=True,
+        blank=True,
+        )
+
+    history = HistoricalRecords() # история изменения значений полей
+
 
     def __str__(self):
         return self.name

@@ -1,18 +1,17 @@
 from django.contrib import admin
+from simple_history.admin import SimpleHistoryAdmin
 from .models import (
     Stock, 
     Product,
-    PriceHistoryDB,
     Bank,
     Buyer,
     OwnCompany,
     StockIn,
     StockOut,
     Supplier,
-    StockInProductList,
+    StockInProductItem,
     StockOutProductList,
     )
-
 
 
 # class ProductInline(admin.TabularInline):
@@ -34,6 +33,7 @@ from .models import (
 
 # @admin.register(StockIn)
 # class StockInAdmin(admin.ModelAdmin):
+#     change_form_template = 'admin/stockin_change_form.html'
 #     list_display = ['in_waybill_number', 'in_invoice_number', 'in_date','supplier', 'buyer', 'comment',]
 #     list_filter = ['in_date','supplier', 'buyer', 'comment',]
 #     search_fields = ['supplier', 'buyer', 'comment',]
@@ -45,9 +45,8 @@ admin.site.register(Product)
 admin.site.register(Bank)
 admin.site.register(Buyer)
 admin.site.register(OwnCompany)
-admin.site.register(PriceHistoryDB)
 admin.site.register(StockOut)
 admin.site.register(Supplier)
 admin.site.register(StockIn)
-admin.site.register(StockInProductList)
+admin.site.register(StockInProductItem)
 admin.site.register(StockOutProductList)

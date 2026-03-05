@@ -5,26 +5,28 @@
 
         {% block content %}
         <a href="{% url 'stockincreate' %}">Создать поступление</a>
-            {% if stockin %}
+            {% if stockin_list %}
                 <table class="table table-striped table-bordered table-hover">
                  <tr>
-                  <th><h4>Дата</h4></th>
-                  <th><h4>Накладная</h4></th>
-                  <th><h4>Счёт-фактура</h4></th>
-                  <th><h4>Поставщик</h4></th>
-                  <th><h4>Покупатель</h4></th>
-                  <th><h4>Сумма</h4></th>
-                  <th><h4>Комментарий</h4></th>
+                    <th style="text-align: center;">Статус</th>
+                    <th style="text-align: center;">Дата</th>
+                    <th style="text-align: center;">Накладная</th>
+                    <th style="text-align: center;">Счёт-фактура</th>
+                    <th style="text-align: center;">Поставщик</th>
+                    <th style="text-align: center;">Покупатель</th>
+                    <th style="text-align: center;">Сумма</th>
+                    <th style="text-align: center;">Комментарий</th>
                  </tr>
-                 {% for doc in stockin %}
+                 {% for stock in stockin_list %}
                  <tr>
-                    <th><h5><a href="">{{ stockin.in_date }}</a></h5></th>
-                    <th><h5>{{ stockin.waybill_number }}</h5></th>
-                    <th><h5>{{ stockin.invoice_number }}</h5></th>
-                    <th><h5>{{ stockin.supplier }}</h5></th> 
-                    <th><h5>{{ stockin.buyer }}</h5></th>
-                    <th><h5>{{ stockin.stock_in_total }}</h5></th>
-                    <th><h5>{{ stockin.comment }}</h5></th>
+                    <th>{{ stock.is_posted }}</th>
+                    <th><a href="">{{ stock.in_date }}</a></th>
+                    <th>{{ stock.in_waybill_number }}</th>
+                    <th>{{ stock.in_invoice_number }}</th>
+                    <th>{{ stock.supplier }}</th> 
+                    <th>{{ stock.buyer }}</th>
+                    <th>{{ stock.stock_in_total }}</th>
+                    <th>{{ stock.comment }}</th>
                   </tr>
                  {% endfor %}
                 </table>

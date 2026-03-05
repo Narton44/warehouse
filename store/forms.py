@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from . models import Stock, StockIn, Bank, Product, OwnCompany, Supplier, Buyer, StockInProductItem
+from .models import Stock, StockIn, Bank, Product, OwnCompany, Supplier, Buyer, StockInProductItem
+from django.forms import inlineformset_factory
+
 
 
 class StockCreationForm(forms.ModelForm): # форма создания склада
@@ -29,6 +31,34 @@ class StockInCreationForm(forms.ModelForm): # форма создания пос
             'is_posted',
             'comment',
         ]
+
+class StockInProductItemForm(forms.ModelForm): # форма строки приходного документа
+
+    class Meta:
+
+        model = StockInProductItem
+        fields = [
+            # 'product',
+            'quantity',
+            'purchase_price',
+            'wholesale_price',
+            'retail_price',
+            ]
+        widgets = {
+            # 'product': forms.Select(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'purchase_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'wholesale_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'retail_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            }
+
+StockInProductItemFormSet = inlineformset_factory( # набор форм для позиций
+StockIn,  # родительская модель
+StockInProductItem,  # дочерняя модель
+form=StockInProductItemForm,
+extra=3,  # количество пустых форм для добавления новых позиций
+can_delete=True,  # возможность удаления существующих позиций
+)
 
 class OwnCompanyCreationForm(forms.ModelForm): # форма создания своей фирмы
 

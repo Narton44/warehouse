@@ -5,6 +5,7 @@ from simple_history.models import HistoricalRecords
 from django.core.validators import MinValueValidator
 
 
+
 class StockInProductItem(models.Model): # модель позиции (строка) товаров, указанный в документе проихода StockIn
     
 

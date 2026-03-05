@@ -10,3 +10,16 @@
     <a href="{% url 'stocklist' %}">Отмена</a>
 </form>
 {% endblock %}
+
+
+    <div>
+        <h3>Позиции товаров</h3>
+        {{ items.management_form }}
+        {% for item_form in items %}
+            <div class="item-form">
+                {{ item_form.as_table }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="submit">Сохранить</button>
+</form>

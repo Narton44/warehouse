@@ -6,15 +6,15 @@ from django.urls import reverse
 
 class StockIn(models.Model): # документ прихода товаров на склад, без перечня товаров
 
-    in_waybill_number = models.SlugField( # номер входящей накладной
+    in_waybill_number = models.CharField( # номер входящей накладной
         verbose_name='№ накладной',
-        max_length=15,
+        max_length=30,
         default='',
     ) 
 
-    in_invoice_number = models.SlugField( # номер входящего счёта-фактуры
+    in_invoice_number = models.CharField( # номер входящего счёта-фактуры
         verbose_name='№ счёта-фактуры',
-        max_length=15,
+        max_length=30,
         default='',
     ) 
 
@@ -50,11 +50,13 @@ class StockIn(models.Model): # документ прихода товаров н
         max_length=50,
         verbose_name='Комментарий',
         default='',
+        null=True,
+        blank=True,
     )
 
-    # def get_absolute_url(self):
+    def get_absolute_url(self):
 
-    #     return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('model-detail-view', args=[str(self.id)])
 
     def __str__(self):
 

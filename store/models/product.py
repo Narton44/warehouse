@@ -48,12 +48,6 @@ class Product(models.Model): # Модель товара
         blank=True,
         )
 
-    customs_declaration = models.CharField( # № таможенной декларации
-        verbose_name='таможенная декларация',
-        null=True,
-        blank=True,
-        )
-
     history = HistoricalRecords() # история изменения значений полей
 
 

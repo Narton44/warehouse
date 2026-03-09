@@ -5,21 +5,99 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <!-- Основная форма документа прихода -->
+    <div class="form-group">
+        <label>№ накладной</label>
+        {{ form.in_waybill_number }}
+    </div>
+    <div class="form-group">
+        <label>№ счёта-фактуры</label>
+        {{ form.in_invoice_number }}
+    </div>
+    <div class="form-group">
+        <label>Дата документа</label>
+        {{ form.in_waybill_date }}
+    </div>
+    <div class="form-group">
+        <label>Дата оприходования</label>
+        {{ form.in_date }}
+    </div>
+    <div class="form-group">
+        <label>Поставщик</label>
+        {{ form.supplier }}
+        <button type = 'submit'><a href="{% url 'suppliercreate' %}">Создать поставщика</a></button>
+    </div>
+    <div class="form-group">
+        <label>Покупатель</label>
+        {{ form.buyer }}
+        <button type = 'submit'><a href="{% url 'buyercreate' %}">Создать покупателя</a></button>
+    </div>
+    <div class="form-group">
+        <label>Проведён</label>
+        {{ form.is_posted }}
+    </div>
+    <div class="form-group">
+        <label>Комментарий</label>
+        {{ form.comment }}
+    </div>
+
+    <!-- Форма позиций товара -->
+    <h4>Позиции товара</h4>
+    {{ items.management_form }}
+
+    {% for form in items %}
+    <div class="inline-form">
+        <table>
+            <tr>
+                <td>
+                    <label>Товар</label>
+            {{ form.product }}
+        </td>
+                <td>
+            <label>Количество</label>
+            {{ form.quantity }}
+        </td>
+                <td>
+            <label>Закупочная цена</label>
+            {{ form.purchase_price }}
+        </td>
+                <td>
+            <label>Оптовая цена</label>
+            {{ form.wholesale_price }}
+        </td>
+                <td>
+            <label>Розничная цена</label>
+            {{ form.retail_price }}
+                </td>
+        <td>
+            <label>Ставка НДС</label>
+            {{ form.retail_price }}
+                </td>
+        <td>
+            <label>Всего НДС</label>
+            {{ form.retail_price }}
+        </td>
+                <td>
+            <label>Всего</label>
+            {{ form.retail_price }}
+        </td>
+                <td>
+            <label>Таможенная декларация</label>
+            {{ form.customs_declaration }}
+        </td>
+                {% if formset.can_delete %}
+                <td>
+            {{ form.DELETE }}
+            <label for="{{ form.DELETE.id_for_label }}">Удалить</label>
+        </td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+
     <button type="submit">Сохранить</button>
-    <a href="{% url 'stocklist' %}">Отмена</a>
+    <button type="submit"><a href="{% url 'stocklist' %}">Отмена</a></button>
 </form>
 {% endblock %}
-
-
-    <div>
-        <h3>Позиции товаров</h3>
-        {{ items.management_form }}
-        {% for item_form in items %}
-            <div class="item-form">
-                {{ item_form.as_table }}
-            </div>
-        {% endfor %}
-    </div>
-    <button type="submit">Сохранить</button>
-</form>

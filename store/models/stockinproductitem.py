@@ -13,14 +13,14 @@ class StockInProductItem(models.Model): # модель позиции (стро�
         StockIn,
         related_name='stock_in_position',
         on_delete=models.CASCADE,
-        ),
+        )
     
     product = models.ForeignKey( # много строк прихода у одного наименования товара
         Product,
         on_delete=models.PROTECT,
         related_name='product_item',
         verbose_name='Товар'
-        ),
+        )
     
     quantity = models.DecimalField( # количество товара в приходе
         'количество',
@@ -57,6 +57,12 @@ class StockInProductItem(models.Model): # модель позиции (стро�
         null=True,
         blank=True,
     )
+
+    customs_declaration = models.CharField( # № таможенной декларации
+        verbose_name='таможенная декларация',
+        null=True,
+        blank=True,
+        )
 
     history = HistoricalRecords() # история изменения значений полей
 

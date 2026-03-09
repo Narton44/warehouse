@@ -15,7 +15,7 @@ class ProductCreationForm(forms.ModelForm): # форма создания кар
 
     class Meta:
         model = Product
-        fields = ['name', 'stock', 'supplier_id', 'measure_unit', 'VAT_tax', 'customs_declaration',]
+        fields = ['name', 'stock', 'supplier_id', 'measure_unit', 'VAT_tax']
 
 class StockInCreationForm(forms.ModelForm): # форма создания поступления товаров
 
@@ -38,23 +38,26 @@ class StockInProductItemForm(forms.ModelForm): # форма строки при�
 
         model = StockInProductItem
         fields = [
-            # 'product',
+            'product',
             'quantity',
             'purchase_price',
             'wholesale_price',
             'retail_price',
+            'customs_declaration',
             ]
         widgets = {
-            # 'product': forms.Select(attrs={'class': 'form-control'}),
+            'product': forms.Select(attrs={'class': 'form-control'}),
             'quantity': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'purchase_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'wholesale_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'retail_price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+           'customs_declaration': forms.TextInput(attrs={'class': 'form-control'}),
             }
 
 StockInProductItemFormSet = inlineformset_factory( # набор форм для позиций
 StockIn,  # родительская модель
 StockInProductItem,  # дочерняя модель
+fk_name='stockin',
 form=StockInProductItemForm,
 extra=3,  # количество пустых форм для добавления новых позиций
 can_delete=True,  # возможность удаления существующих позиций

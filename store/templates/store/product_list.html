@@ -4,28 +4,35 @@
 
 
         {% block content %}
-        <a href="{% url 'product_create' %}">Создать товар</a>
+         <a href="{% url 'product_create' %}">Создать товар</a>
             {% if product_list %}
 
                 <table class="table table-striped table-bordered table-hover w-100">
                  <tr>
-                  <th style="text-align: center;">Наименование</th>
-                  <th style="text-align: center;">Склад</th>
-                  <th style="text-align: center;">Артикул</th>
-                  <th style="text-align: center;">Кол-во</th>
-                  <th style="text-align: center;">Ед. изм.</th>
-                  <th style="text-align: center;">Цена за единицу</th>
-                  <th style="text-align: center;">Всего</th>
-                 </tr>
+                    <th style="text-align: center;">Наименование</th>
+                    <th style="text-align: center;">Склад</th>
+                    <th style="text-align: center;">Артикул</th>
+                    <th style="text-align: center;">Кол-во</th>
+                    <th style="text-align: center;">Ед. изм.</th>
+                    <th style="text-align: center;">Цена закупки</th>
+                    <th style="text-align: center;">Оптовая цена</th>
+                    <th style="text-align: center;">Всего(опт)</th>
+                    <th style="text-align: center;">Розничная цена</th>
+                    <th style="text-align: center;">Всего(розн)</th>
+                </tr>
                  {% for product in product_list %}
+                <tr>
                     <th><a href="{% url 'productdetail' product.pk %}">{{ product.name }}</a></th>
                     <th>{{ product.stock }}</th>
                     <th>{{ product.supplier_id }}</th>
                     <th>{{ product.quantity }}</th>
                     <th>{{ product.measure_unit }}</th> 
-                    <th>{{ product.price }} р.</th>
-                    <th>{{ product.total_value }}</th>
-                  </tr>
+                    <th>{{ product.purchase_price }} р.</th>
+                    <th>{{ product.wholesale_price }} р.</th>
+                    <th>{{ product.total_value_whole }} р.</th>
+                    <th>{{ product.retail_price }} р.</th>
+                    <th>{{ product.total_value_retail }} р.</th>
+                </tr>
                  {% endfor %}
                 </table>
             {% else %}

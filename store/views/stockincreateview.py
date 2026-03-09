@@ -6,13 +6,11 @@ from store.forms import StockInCreationForm, StockInProductItemFormSet
 from django.urls import reverse_lazy
 
 
-class StockInCreateView(CreateView): # класс создания закупки товаров
+class StockInCreateView(CreateView):  # класс создания закупки товаров
     model = StockIn
     form_class = StockInCreationForm
     template_name = 'store/stockinadd.html'
     success_url = reverse_lazy('stockin')
-
-
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -25,17 +23,25 @@ class StockInCreateView(CreateView): # класс создания закупк�
     def form_valid(self, form):
         context = self.get_context_data()
         items_formset = context['items']
-        with transaction.atomic():
-            self.object = form.save()
-            if items_formset.is_valid():
-                items_formset.instance = self.object
-                items_formset.save()
-        return super().form_valid(form)
 
-    def form_valid(self,form):
-        return super().form_valid(form)
-    
-   
+        with transaction.atomic():
+            # Сохраняем основной документ (StockIn)
+            self.object = form.save()
+
+            # Связываем FormSet с только что созданным объектом
+            items_formset.instance = self.object
+
+            if items_formset.is_valid():
+                # Сохраняем все позиции товара
+                items_formset.save()
+                return super().form_valid(form)
+            else:
+                # Если FormSet невалиден, возвращаем страницу с ошибками
+                # Это позволит показать ошибки валидации пользователю
+                return self.render_to_response(
+                    self.get_context_data(form=form)
+                )
+
 
     # def stockin_detail(request, pk):
     #     stockin = get_object_or_404(StockIn, pk=pk)
